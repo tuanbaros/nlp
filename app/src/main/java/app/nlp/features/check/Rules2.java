@@ -100,7 +100,8 @@ public class Rules2 {
 				if (consonants.contains(String.valueOf(x.charAt(i)))
 						&& (consonants.contains(String.valueOf(x.charAt(i + 1))))
 						&& consonants.contains(String.valueOf(x.charAt(i + 2)))
-						&& ((x.charAt(i) != 'n') || x.charAt(i + 1) != 'g' || x.charAt(i + 2) != 'h')) {
+						&& ((x.charAt(i) != 'n') || x.charAt(i + 1) !=
+						'g' || x.charAt(i + 2) != 'h')) {
 					return true;
 				}
 			}
@@ -144,7 +145,8 @@ public class Rules2 {
 		// if(!x.contains("p"))
 		// return true;
 		if (x.contains("p")) {
-			if (x.charAt(x.length() - 1) == 'p' && !(nguyenAm.contains(String.valueOf(x.charAt(x.length() - 2))))) {
+			if (x.charAt(x.length() - 1) == 'p' &&
+					!(nguyenAm.contains(String.valueOf(x.charAt(x.length() - 2))))) {
 				return false;
 			}
 			if (x.charAt(0) == 'p' && x.charAt(1) != 'h') {
@@ -160,7 +162,8 @@ public class Rules2 {
 		String nguyenAmSau = "iíìịỉĩeéèẹẻẽêếềệểễ";
 		String nguyenAmTruoc = "áạặắấậéẹếệíịóọốộớợúụứự";
 		if (x.contains("c")) {
-			if (x.charAt(0) == 'c' && (nguyenAmSau.contains(String.valueOf(x.charAt(1)))
+			if (x.charAt(0) == 'c' &&
+					(nguyenAmSau.contains(String.valueOf(x.charAt(1)))
 					|| tempC.replace('h', 'c').contains(String.valueOf(x.charAt(1))))) {
 				return false;
 			}
@@ -206,7 +209,8 @@ public class Rules2 {
 	public boolean checkT(String x) {
 		String nguyenAm = "áạắặấậéẹíịóọốộớợúụếệứựýỵ";
 		String temp = consonants;
-		return !x.contains("t") || !(x.charAt(0) == 't' && temp.replace('h', 't').replace('r', 't').contains(String.valueOf(x.charAt(1)))) && !(x.charAt(x.length() - 1) == 't' && !(nguyenAm.contains(String.valueOf(x.charAt(x.length() - 2)))));
+		return !x.contains("t") || !(x.charAt(0) == 't'
+				&& temp.replace('h', 't').replace('r', 't').contains(String.valueOf(x.charAt(1)))) && !(x.charAt(x.length() - 1) == 't' && !(nguyenAm.contains(String.valueOf(x.charAt(x.length() - 2)))));
 	}
 
 	public boolean checkN(String x) {
@@ -228,7 +232,8 @@ public class Rules2 {
 	public boolean checkK(String x) {
 		String nguyenam = "iíìịỉĩeéèẹẻẽêếềệểễyýỳỵỷỹ";
 		if (x.contains("k")) {
-			if (x.charAt(0) == 'k' && (x.charAt(1) == 'h' || nguyenam.contains(String.valueOf(x.charAt(1)))))
+			if (x.charAt(0) == 'k' && (x.charAt(1) == 'h'
+					|| nguyenam.contains(String.valueOf(x.charAt(1)))))
 				return true;
 			else {
 				return false;
@@ -264,12 +269,14 @@ public class Rules2 {
 	// check s
 
 	public boolean checkS(String x) {
-		return !x.contains("s") || x.charAt(0) == 's' && !consonants.contains(String.valueOf(x.charAt(1)));
+		return !x.contains("s") || x.charAt(0) == 's'
+				&& !consonants.contains(String.valueOf(x.charAt(1)));
 	}
 
 	// kiem tra x
 	public boolean checkX(String x) {
-		return !x.contains("x") || x.charAt(0) == 'x' && !consonants.contains(String.valueOf(x.charAt(1)));
+		return !x.contains("x") || x.charAt(0) == 'x'
+				&& !consonants.contains(String.valueOf(x.charAt(1)));
 	}
 
 	// kiem tra m
@@ -278,7 +285,8 @@ public class Rules2 {
 			if (x.charAt(0) == 'm') {
 				return !consonants.contains(String.valueOf(x.charAt(1)));
 			} else
-				return x.charAt(x.length() - 1) == 'm' && !consonants.contains(String.valueOf(x.length() - 2));
+				return x.charAt(x.length() - 1) == 'm'
+						&& !consonants.contains(String.valueOf(x.length() - 2));
 		}
 		return true;
 	}
@@ -302,22 +310,26 @@ public class Rules2 {
 
 	// check D
 	public boolean checkD(String x) {
-		return !x.contains("d") || x.charAt(0) == 'd' && !consonants.contains(String.valueOf(x.charAt(1)));
+		return !x.contains("d") || x.charAt(0) == 'd'
+				&& !consonants.contains(String.valueOf(x.charAt(1)));
 	}
 
 	// check D
 	public boolean checkĐ(String x) {
-		return !x.contains("đ") || x.charAt(0) == 'đ' && !consonants.contains(String.valueOf(x.charAt(1)));
+		return !x.contains("đ") || x.charAt(0) == 'đ'
+				&& !consonants.contains(String.valueOf(x.charAt(1)));
 	}
 
 	// check L
 	public boolean checkL(String x) {
-		return !x.contains("l") || x.charAt(0) == 'l' && !consonants.contains(String.valueOf(x.charAt(1)));
+		return !x.contains("l") || x.charAt(0) == 'l'
+				&& !consonants.contains(String.valueOf(x.charAt(1)));
 	}
 
 	// check V
 	public boolean checkV(String x) {
-		return !x.contains("v") || x.charAt(0) == 'v' && !consonants.contains(String.valueOf(x.charAt(1)));
+		return !x.contains("v") || x.charAt(0) == 'v'
+				&& !consonants.contains(String.valueOf(x.charAt(1)));
 	}
 
 	public boolean check(String x) {
