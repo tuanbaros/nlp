@@ -195,7 +195,8 @@ class Rule {
 
 				// check rhyme special
 				if (temp.equals("a") || temp.equals("à") || temp.equals("ã")) {
-					if (nonRhymeA1[0].equals(last) || nonRhymeA1[1].equals(last) || nonRhymeA1[2].equals(last)
+					if (nonRhymeA1[0].equals(last) || nonRhymeA1[1].equals(last)
+							|| nonRhymeA1[2].equals(last)
 							|| nonRhymeA1[3].equals(last)) {
 						return false;
 					}

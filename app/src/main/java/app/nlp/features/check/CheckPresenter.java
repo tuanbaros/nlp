@@ -80,6 +80,8 @@ public class CheckPresenter {
         File file;
         Rules2 rules = new Rules2();
         Rule rule = new Rule();
+        StringBuilder trueword = new StringBuilder();
+        StringBuilder falseword = new StringBuilder();
         for (String sectioneName : sections) {
             file = new File(Environment.getExternalStorageDirectory() +
                     File.separator + "NLP" + "/" + comicName + "/" + sectioneName);
@@ -93,42 +95,59 @@ public class CheckPresenter {
                         String[] array = line.toLowerCase().trim().replaceAll("[-?+;,.!:\\(\\)'*\"\\[\\]«»…，。；？！ ]", " ").split(" ");
                         for (String s : array) {
                             String after = s.trim();
-                            if (after.length() > 1) {
-                                if (!TextUtils.isDigitsOnly(after)) {
-                                    if ((!after.equals("") && !rule.checkVowelTotal(after))) {
-                                        SearchResult ruleResult = new SearchResult();
-                                        ruleResult.setContent(line);
-                                        ruleResult.setWord(s);
-                                        ruleResult.setSection(sectioneName);
-                                        ruleResult.setLine(count);
-                                        results.add(ruleResult);
-                                        Log.i("timkiem", after);
-                                        continue;
+                            if (!trueword.toString().contains(after)) {
+//                                if (!falseword.toString().contains(after)) {
+                                    if (after.length() > 1) {
+                                        if (!TextUtils.isDigitsOnly(after)) {
+                                            if ((!after.equals("") && !rule.checkVowelTotal(after))) {
+                                                SearchResult ruleResult = new SearchResult();
+                                                ruleResult.setContent(line);
+                                                ruleResult.setWord(s);
+                                                ruleResult.setSection(sectioneName);
+                                                ruleResult.setLine(count);
+                                                results.add(ruleResult);
+                                                Log.i("timkiem", after);
+//                                                falseword.append(" " + after);
+                                                continue;
 
-                                    }
-                                    if (!after.equals("") && !rules.check(after)) {
-                                        SearchResult ruleResult = new SearchResult();
-                                        ruleResult.setContent(line);
-                                        ruleResult.setWord(s);
-                                        ruleResult.setSection(sectioneName);
-                                        ruleResult.setLine(count);
-                                        results.add(ruleResult);
-                                        Log.i("timkiem", after);
-                                    }
-                                }
+                                            }
+                                            if (!after.equals("") && !rules.check(after)) {
+                                                SearchResult ruleResult = new SearchResult();
+                                                ruleResult.setContent(line);
+                                                ruleResult.setWord(s);
+                                                ruleResult.setSection(sectioneName);
+                                                ruleResult.setLine(count);
+                                                results.add(ruleResult);
+                                                Log.i("timkiem", after);
+//                                                falseword.append(" " + after);
+                                                continue;
+                                            }
+                                        }
 
-                            } else if (array.length == 1) {
-                                if (!after.equals("") && !rules.checkInvalid2(after) ) {
-                                    SearchResult ruleResult = new SearchResult();
-                                    ruleResult.setContent(line);
-                                    ruleResult.setWord(s);
-                                    ruleResult.setSection(sectioneName);
-                                    ruleResult.setLine(count);
-                                    results.add(ruleResult);
-                                    Log.i("timkiem", after);
-                                }
+                                    } else if (array.length == 1) {
+                                        if (!after.equals("") && !rules.checkInvalid2(after)) {
+                                            SearchResult ruleResult = new SearchResult();
+                                            ruleResult.setContent(line);
+                                            ruleResult.setWord(s);
+                                            ruleResult.setSection(sectioneName);
+                                            ruleResult.setLine(count);
+                                            results.add(ruleResult);
+//                                            falseword.append(" " + after);
+                                            Log.i("timkiem", after);
+                                            continue;
+                                        }
+                                    }
+//                                } else {
+//                                    SearchResult ruleResult = new SearchResult();
+//                                    ruleResult.setContent(line);
+//                                    ruleResult.setWord(s);
+//                                    ruleResult.setSection(sectioneName);
+//                                    ruleResult.setLine(count);
+//                                    results.add(ruleResult);
+//                                    continue;
+//                                }
+                                trueword.append(" " + after);
                             }
-
                         }
                     }
                 }
